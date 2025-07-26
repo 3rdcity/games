@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classic Checkers Game</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1><i class="fas fa-crown"></i> Classic Checkers</h1>
+            <div class="game-controls">
+                <button id="newGameBtn" class="btn btn-primary">
+                    <i class="fas fa-play"></i> New Game
+                </button>
+                <button id="leaderboardBtn" class="btn btn-secondary">
+                    <i class="fas fa-trophy"></i> Leaderboard
+                </button>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="game-section">
+                <div class="game-info">
+                    <div class="player-info">
+                        <div class="player player-red active">
+                            <div class="player-indicator">
+                                <div class="piece red-piece"></div>
+                                <span class="player-name">Player 1 (Red)</span>
+                            </div>
+                            <div class="score">
+                                <span class="captured">Captured: <span id="redCaptured">0</span></span>
+                            </div>
+                        </div>
+                        <div class="turn-indicator">
+                            <span id="currentTurn">Red's Turn</span>
+                        </div>
+                        <div class="player player-black">
+                            <div class="player-indicator">
+                                <div class="piece black-piece"></div>
+                                <span class="player-name">Player 2 (Black)</span>
+                            </div>
+                            <div class="score">
+                                <span class="captured">Captured: <span id="blackCaptured">0</span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="game-board-container">
+                    <div id="gameBoard" class="game-board"></div>
+                </div>
+
+                <div class="game-status">
+                    <div id="gameMessage" class="game-message">Click on a piece to start playing!</div>
+                    <div class="game-actions">
+                        <button id="resetBtn" class="btn btn-outline">
+                            <i class="fas fa-redo"></i> Reset Game
+                        </button>
+                        <button id="undoBtn" class="btn btn-outline" disabled>
+                            <i class="fas fa-undo"></i> Undo Move
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Game Over Modal -->
+    <div id="gameOverModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-trophy"></i> Game Over!</h2>
+            </div>
+            <div class="modal-body">
+                <div id="winnerMessage" class="winner-message"></div>
+                <div class="game-stats">
+                    <div class="stat">
+                        <span class="stat-label">Total Moves:</span>
+                        <span id="totalMoves" class="stat-value">0</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Game Duration:</span>
+                        <span id="gameDuration" class="stat-value">0:00</span>
+                    </div>
+                </div>
+                <div class="player-names">
+                    <input type="text" id="player1Name" placeholder="Player 1 Name" maxlength="20">
+                    <input type="text" id="player2Name" placeholder="Player 2 Name" maxlength="20">
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button id="saveGameBtn" class="btn btn-primary">
+                    <i class="fas fa-save"></i> Save to Leaderboard
+                </button>
+                <button id="playAgainBtn" class="btn btn-secondary">
+                    <i class="fas fa-play"></i> Play Again
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Leaderboard Modal -->
+    <div id="leaderboardModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-trophy"></i> Leaderboard</h2>
+                <button id="closeLeaderboardBtn" class="close-btn">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="leaderboard-controls">
+                    <button id="clearLeaderboardBtn" class="btn btn-outline btn-sm">
+                        <i class="fas fa-trash"></i> Clear All
+                    </button>
+                </div>
+                <div id="leaderboardContent" class="leaderboard-content">
+                    <div class="no-games">No games recorded yet. Play a game to see results here!</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
